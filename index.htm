@@ -1,0 +1,512 @@
+<title></title>
+<head>
+   <meta http-equiv="content-script-type" content="text/javascript">
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css" rel="stylesheet" type="text/css">
+   <link href="res/css/base.css" rel="stylesheet" type="text/css">
+   <link href="res/css/canvas.css" rel="stylesheet" type="text/css">
+   <link href="res/css/ui.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+   <script type="text/javascript" src="https://sgxengine.com/code/sgx/sgx-4.0.0.min.js"></script>
+   <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+
+   <script type="text/javascript" src="worlds/s06.js"></script>
+   <script type="text/javascript" src="worlds/s10.js"></script>
+   <script type="text/javascript" src="worlds/s11.js"></script>
+   <script type="text/javascript" src="worlds/s12.js"></script>
+   <script type="text/javascript" src="worlds/s14.js"></script>
+
+   <script type="text/javascript" src="res/js/main.js"></script>
+   <script type="text/javascript" src="res/js/ui.js"></script>
+   <script type="text/javascript" src="res/js/ui_controls.js"></script>
+   <script type="text/javascript" src="res/js/utils.js"></script>
+   
+   <script type="text/javascript">
+      $( window ).on( "load", function() {
+        SGXPrepare_OS();
+	  });
+   </script>
+   <script type="module">
+      import { raytracer as raytracerNormal } from './raytracer.js';
+      import { raytracer as raytracerMinimized } from './raytracer.min.js';
+
+	  window.raytracerNormal = raytracerNormal;
+      window.raytracerMinimized = raytracerMinimized;
+
+	  window.raytracer = raytracerNormal;
+   </script>
+   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <!-- Navbar content -->
+      <a class="navbar-brand" href="#">
+      <img src="res/img/14a.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      The Six Hour Raytracer - A rapid implementation of "Ray Tracing In One Weekend"
+      </a>
+   </nav>
+   <div class="container-fluid">
+      <div class="row">
+
+
+		<!-- 1st col -->
+         <div class="col-md-2 col-narrow-padding">
+
+			<div class="card card-padding" style="width: 100%;">
+				<img class="card-img-top" src="res/img/title.png" alt="Raytracer">
+				<div class="card-body">
+				   <h5 class="card-title">Sections 1-5</h5>
+				   
+
+					<ul class="list-group mt-5 text-white">
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="2" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/01a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">2. Gradient</h6>
+								<div class="about"><span>Basic red-green gradient fill</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s02.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#outputanimage">Book</a></span></div>
+							</div>
+						</div>
+						<div>a</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="4" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/04a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">4. Ray color</h6>
+								<div class="about"><span>Constant of black</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s04.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#rays,asimplecamera,andbackground">Book</a></span></div>
+							</div>
+						</div>
+						<div>a</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="4" data-render-version="1">
+						<div class="d-flex flex-row">
+							<img src="res/img/04b.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">4. Ray color</h6>
+								<div class="about"><span>Determined by ray direction</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s04.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html##rays,asimplecamera,andbackground/sendingraysintothescene">Book</a></span></div>
+							</div>
+						</div>
+						<div>b</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="5" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/05a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">5. Basic sphere</h6>
+								<div class="about"><span>Fixed colour sphere</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s05.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#addingasphere">Book</a></span></div>
+							</div>
+						</div>
+						<div></div>
+						</li>
+
+					</ul>
+
+				</div>
+	
+			</div>
+	
+         </div>
+
+
+
+		<!-- 1st col -->
+		<div class="col-md-2 col-narrow-padding">
+
+			<div class="card card-padding" style="width: 100%;">
+				<img class="card-img-top" src="res/img/title.png" alt="Raytracer">
+				<div class="card-body">
+				   <h5 class="card-title">Sections 6-8</h5>
+
+					<ul class="list-group mt-5 text-white">
+
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="6" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/06a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">6. Sphere coloured</h6>
+								<div class="about"><span>Colours based on normals</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s06.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#surfacenormalsandmultipleobjects">Book</a></span></div>
+							</div>
+						</div>
+						<div>a</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="6" data-render-version="1">
+						<div class="d-flex flex-row">
+							<img src="res/img/06b.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">6. Sphere coloured</h6>
+								<div class="about"><span>Simplified hit test</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s06.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#surfacenormalsandmultipleobjects/simplifyingtheray-sphereintersectioncode">Book</a></span></div>
+							</div>
+						</div>
+						<div>b</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="6" data-render-version="2">
+						<div class="d-flex flex-row">
+							<img src="res/img/06c.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">6. Sphere coloured</h6>
+								<div class="about"><span>Collision via world data</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s06.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#surfacenormalsandmultipleobjects/anabstractionforhittableobjects">Book</a></span></div>
+							</div>
+						</div>
+						<div>c</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="7" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/07a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">7. Camera object</h6>
+								<div class="about"><span>New class</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s07.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#movingcameracodeintoitsownclass">Book</a></span></div>
+							</div>
+						</div>
+						<div></div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="8" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/08a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">8. Ray sampling</h6>
+								<div class="about"><span>Set to 1</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s08.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#antialiasing">Book</a></span></div>
+							</div>
+						</div>
+						<div>a</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="8" data-render-version="1">
+						<div class="d-flex flex-row">
+							<img src="res/img/08b.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">8. Ray sampling</h6>
+								<div class="about"><span>Set to 10</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s08.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#antialiasing">Book</a></span></div>
+							</div>
+						</div>
+						<div></div>
+						</li>
+					</ul>
+
+				</div>
+	
+			</div>
+	
+         </div>
+
+		 <!-- 2nd col -->
+         <div class="col-md-4 col-narrow-padding">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="card card-padding" style="width: 100%;">
+                     <img class="card-img-top" src="res/img/title.png" alt="Raytracer">
+                     <div class="card-body">
+                        <h5 class="card-title">Output</h5>
+                        <div align="center" id="game_screen">
+                           <canvas id="SGXCanvas" width="320" height="200" class="magnifier-preview">
+                              This browser does not support the HTML5 Canvas.
+                           </canvas>
+                        </div>
+                        <h5 class="card-title">Status</h5>
+                        <div class="d-flex bd-highlight">
+                           <div class="p-2 flex-fill bd-highlight">
+                              <div class="panel-body" id="ui-render-progress">
+                                 <h6  class="text-dark" id="ui-render-progress-text"></h6>
+                              </div>
+                           </div>
+                           <div class="p-2 flex-fill bd-highlight">
+                              <div class="panel-body" id="ui-render-panel">
+                                 <h6  class="text-dark" id="ui-render-panel-text">Ready</h6>
+                              </div>
+                           </div>
+                           <div class="p-2 flex-fill bd-highlight"><button type="button" class="btn btn-primary" id="ui-render-stop">Stop Render</button></div>
+                           <div class="p-2 flex-fill bd-highlight"><button type="button" class="btn btn-primary" id="ui-render-save">Download PPM</button></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+			<div class="row bottom-right" id="ui-control-panel">
+               <div class="col-sm-12">
+                  <div class="card card-padding" style="width: 100%;" id="ui-raytracer-settings">
+                     <img class="card-img-top" src="res/img/title.png" alt="Status">
+                     <div class="card-body">
+                        <h5 class="card-title">Control</h5>
+
+						<!--
+                        <div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="ui-check-minmized">
+							<label class="form-check-label form-padding" for="ui-check-minmized">
+							Use minimized library
+							</label>
+						 </div>
+						-->
+						 <div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="ui-check-realtimeUpdate" checked>
+							<label class="form-check-label form-padding" for="ui-check-realtimeUpdate">
+							Real-time update
+							</label>
+						 </div>
+
+						<div id="ui-controls-step9">
+							<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="ui-check-fixShadowAcne">
+							<label class="form-check-label form-padding" for="ui-check-fixShadowAcne">
+							Fix shadow acne
+							</label>
+							</div>
+							<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="ui-check-applyGammaCorrection">
+							<label class="form-check-label form-padding" for="ui-check-applyGammaCorrection">
+							Apply gamma correction
+							</label>
+							</div>
+						</div>
+
+						<div id="ui-controls-step13">
+							<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="ui-check-applyDefocus">
+							<label class="form-check-label form-padding" for="ui-check-applyDefocus">
+							Apply defocus
+							</label>
+							</div>
+						</div>
+
+						<div id="ui-controls-step8">
+							<div class="form-check form-check-inline">
+							<label class="form-check-label" for="inlineRadio2">Scattering:</label>
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="ui-scattering-off" value="option1">
+							<label class="form-check-label" for="inlineRadio1">Off</label>
+							</div>
+							<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="ui-scattering-linear" value="option2">
+							<label class="form-check-label" for="inlineRadio2">Linear</label>
+							</div>
+							<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="ui-scattering-lambertian" value="option3">
+							<label class="form-check-label" for="inlineRadio3">Lambertian</label>
+							</div>
+						</div>
+                     </div>
+
+					 <div id="ui-controls-step8plus">
+						<div class="form-check form-check-inline">
+							<label class="form-check-label form-padding" for="xui-scattering-depth">Scattering depth: </label>
+							<input id="ui-scattering-depth" data-slider-id='ui-scattering-depthSlider' type="text" data-slider-min="1" data-slider-max="25" data-slider-step="1" data-slider-value="10"/>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label form-padding" for="xui-sampling-count">Sampling count: </label>
+							<input id="ui-sampling-count" data-slider-id='ui-sampling-countSlider' type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
+						</div>
+					</div>
+
+                     <div class="form-check form-check-inline" id="ui-controls-step12-fov">
+                        <label class="form-check-label form-padding" for="xui-sampling-count">FOV: </label>
+                        <input id="ui-camera-fov" data-slider-id='ui-camera-fovSlider' type="text" data-slider-min="10" data-slider-max="170" data-slider-step="1" data-slider-value="90"/>
+                     </div>
+                     <div class="form-check form-check-inline">
+                        <button id="ui-control-render" type="submit" class="btn btn-primary mb-2">Render</button>
+                     </div>
+                  </div>
+               </div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card card-padding" style="width: 100%;">
+					<img class="card-img-top" src="res/img/title.png" alt="Raytracer">
+					<div class="card-body">
+						<h5 class="card-title">Reload with alternate canvas width:</h5>
+						<div class="d-flex bd-highlight">
+							<div class="p-2 flex-fill bd-highlight ui-reload"><button type="button" class="btn btn-primary" data-reload-width="60">60</button></div>
+							<div class="p-2 flex-fill bd-highlight ui-reload"><button type="button" class="btn btn-primary" data-reload-width="100">100</button></div>
+							<div class="p-2 flex-fill bd-highlight ui-reload"><button type="button" class="btn btn-primary" data-reload-width="400">400</button></div>
+							<div class="p-2 flex-fill bd-highlight ui-reload"><button type="button" class="btn btn-primary" data-reload-width="600">600</button></div>
+							<div class="p-2 flex-fill bd-highlight ui-reload"><button type="button" class="btn btn-primary" data-reload-width="1024">1024</button></div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+         </div>
+
+		 <!-- 3rd col? -->
+         <div class="col-md-2 col-narrow-padding">
+
+			<div class="card card-padding" style="width: 100%;">
+				<img class="card-img-top" src="res/img/title.png" alt="Raytracer">
+				<div class="card-body">
+				   <h5 class="card-title">Sections 9-11</h5>
+
+					<ul class="list-group mt-5 text-white">
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="9" data-render-version="0">
+							<div class="d-flex flex-row">
+								<img src="res/img/09a.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">9. Scattering variations</h6>
+									<div class="about"><span>Linear</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s09.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials">Book</a></span></div>
+								</div>
+							</div>
+							<div>a</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="9" data-render-version="1">
+						<div class="d-flex flex-row">
+							<img src="res/img/09b.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">9. Scattering variations</h6>
+								<div class="about"><span>Linear, with shadow acne fix</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s09.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/fixingshadowacne">Book</a></span></div>
+							</div>
+						</div>
+						<div>b</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="9" data-render-version="2">
+						<div class="d-flex flex-row">
+							<img src="res/img/09c.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">9. Scattering variations</h6>
+								<div class="about"><span>Lambertian</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s09.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/truelambertianreflection">Book</a></span></div>
+							</div>
+						</div>
+						<div>c</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="9" data-render-version="3">
+						<div class="d-flex flex-row">
+							<img src="res/img/09d.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">9. Scattering variations</h6>
+								<div class="about"><span>Lambertian, with gamma</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s09.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity">Book</a></span></div>
+							</div>
+						</div>
+						<div>d</div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="10" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/10a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">10. Three spheres</h6>
+								<div class="about"><span>Metal and lambertian</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s10.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#metal">Book</a></span></div>
+							</div>
+						</div>
+						<div></div>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="11" data-render-version="0">
+						<div class="d-flex flex-row">
+							<img src="res/img/11a.png" height="40" />
+							<div class="ml-2">
+								<h6 class="mb-0">11. Three spheres</h6>
+								<div class="about"><span>With dieletric material</span></div>
+								<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s11.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#dielectrics">Book</a></span></div>
+							</div>
+						</div>
+						<div></div>
+						</li>
+
+					</ul>
+
+					</div>
+				</div>
+			</div>
+	
+			<!-- 3b -->
+			<div class="col-md-2 col-narrow-padding">
+
+				<div class="card card-padding" style="width: 100%;">
+					<img class="card-img-top" src="res/img/title.png" alt="Raytracer">
+					<div class="card-body">
+					<h5 class="card-title">Sections 12-14</h5>
+
+						<ul class="list-group mt-5 text-white">
+
+							<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="12" data-render-version="0">
+							<div class="d-flex flex-row">
+								<img src="res/img/12a.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">12. Positionable camera</h6>
+									<div class="about"><span>Red/blue spheres</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s12.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#positionablecamera">Book</a></span></div>
+								</div>
+							</div>
+							<div>a</div>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="12" data-render-version="1">
+							<div class="d-flex flex-row">
+								<img src="res/img/12b.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">12. Positionable camera</h6>
+									<div class="about"><span>Three spheres</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s12.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#positionablecamera">Book</a></span></div>
+								</div>
+							</div>
+							<div>b</div>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="12" data-render-version="2">
+							<div class="d-flex flex-row">
+								<img src="res/img/12c.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">12. Positionable camera</h6>
+									<div class="about"><span>Three spheres, zoomed in</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s12.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#positionablecamera">Book</a></span></div>
+								</div>
+							</div>
+							<div>c</div>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="13" data-render-version="0">
+							<div class="d-flex flex-row">
+								<img src="res/img/13a.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">13. Defocus blur</h6>
+									<div class="about"><span>Three spheres</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s12.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#defocusblur">Book</a></span></div>
+								</div>
+							</div>
+							<div></div>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="14" data-render-version="0">
+							<div class="d-flex flex-row">
+								<img src="res/img/14a.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">14. The finale</h6>
+									<div class="about"><span>Lots of spheres!</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s14.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#wherenext?">Book</a></span></div>
+								</div>
+							</div>
+							<div>a</div>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-content-center ui-action-render" data-render-stage="14" data-render-version="1">
+							<div class="d-flex flex-row">
+								<img src="res/img/14b.png" height="40" />
+								<div class="ml-2">
+									<h6 class="mb-0">14. The finale</h6>
+									<div class="about"><span>With defocus</span></div>
+									<div class="about"><span><a target="new" href="https://github.com/MarquisdeGeek/six_hour_raytracer/book/s14.js">Source</a> | <a target="new" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#wherenext?">Book</a></span></div>
+								</div>
+							</div>
+							<div>b</div>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+
+
+         </div>
+      </div>
+   </div>
+   <footer class="bg-body-tertiary text-center text-lg-start">
+      <div class="text-center p-3 text-light" style="background-color: rgba(0, 0, 0, 0.05);">
+         Original Project:
+         <a class="text-light" href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">https://raytracing.github.io/books/RayTracingInOneWeekend.html</a>
+      </div>
+      <!-- Copyright -->
+   </footer>
+</body>
