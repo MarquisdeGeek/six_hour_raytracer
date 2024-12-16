@@ -31,3 +31,9 @@ rm raytracer.tmp.js
 ```
 
 Just remember to change the filename in `index.htm`
+
+
+## Goals
+
+Make it run the ""Juggler"" demo. e.g. http://www.etwright.org/cghist/juggler_rt.html
+
