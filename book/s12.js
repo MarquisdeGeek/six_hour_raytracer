@@ -178,7 +178,7 @@ class Camera {
         // TODO: Add post-render smoothing, if this is useful
         const scaleFactor = this.#scale;
         if (scaleFactor === 1) { // minor optimisation for the majority of cases
-            imageData.plot = imageData.setPixelAt(col, x, y).bind(imageData);
+            imageData.plot = imageData.setPixelAt;
         } else {
             imageData.plot = function(col, x, y) {
                 this.fillRect(col, x, y, scaleFactor, scaleFactor);
