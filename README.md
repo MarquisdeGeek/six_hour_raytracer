@@ -17,6 +17,8 @@ The variable names have been kept in snake_case, despite my preference for lower
 
 The vec3 type is taken from the SGX graphics library, as are the basic HTML canvas access methods.
 
+You can supply arguments in the URL for `width` and `scale` to render at alternate canvas sizes.
+
 
 
 ## Making a ugly version

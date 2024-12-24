@@ -1,6 +1,8 @@
 let bContinueRendering;
+let gImageScale;
 
-function uiPrepare() {
+function uiPrepare(imageScale) {
+    gImageScale = imageScale;
 }
 
 
@@ -18,6 +20,10 @@ function uiInit() {
         const id = stage * 10 + version; // BUGWARN: Limited to 10 versions per stage
         let camera;
         let worldData;
+
+        // Sneaky hack, to inject a scale value into the surface, so a 400 pixel canvas
+        // is rendered in 200 px.
+        surface.imageRescale = gImageScale;
 
 		// TODO: Trick the renderer into stopping automatically, if it is in progress
 

@@ -32,6 +32,7 @@ class Camera {
 #surface;
 #image_width;
 #image_height;
+#scale;
 #aspect_ratio;
 #samples_per_pixel;
 #pixel_samples_scale;
@@ -49,6 +50,7 @@ class Camera {
         this.#image_width = surface_.getWidth();
         this.#image_height = surface_.getHeight();
         this.#aspect_ratio = this.#image_width / this.#image_height;
+        this.#scale = surface_.imageRescale;
 
         this.initialise();
     }
@@ -172,6 +174,17 @@ class Camera {
         const progressData = progress.start();
         const imageData = new sgx.ImageData();
 
+        // Provide a way to render a 400 px canvas in fewer pixels
+        // TODO: Add post-render smoothing, if this is useful
+        const scaleFactor = this.#scale;
+        if (scaleFactor === 1) { // minor optimisation for the majority of cases
+            imageData.plot = imageData.setPixelAt(col, x, y).bind(imageData);
+        } else {
+            imageData.plot = function(col, x, y) {
+                this.fillRect(col, x, y, scaleFactor, scaleFactor);
+            }.bind(imageData);
+        }
+
         this.#surface.lock(imageData);
 
         this.#recomputeCamera();
@@ -194,7 +207,7 @@ class Camera {
 
             let j = progressData.userdata.row; // using j as an alias to match the book (and micro-optimisation)
 
-            for (let i = 0; i < this.#image_width; i++) {
+            for (let i = 0; i < this.#image_width; i+=this.#scale) {
 
                 // the ray(s)
                 let pixel_color = new color3(0,0,0);
@@ -211,10 +224,10 @@ class Camera {
                     pixel_color.z = linear_to_gamma(pixel_color.z);
                 }
 
-                progressData.userdata.imageData.setPixelAt({r:pixel_color.x, g:pixel_color.y, b:pixel_color.z, a:1}, i, j);
+                progressData.userdata.imageData.plot({r:pixel_color.x, g:pixel_color.y, b:pixel_color.z, a:1}, i, j);
             }
             //
-            ++progressData.userdata.row;
+            progressData.userdata.row += this.#scale;
 
             progress.updateFrame(progressData);
 
